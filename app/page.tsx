@@ -3,6 +3,8 @@
 
 import { useEffect, useState } from "react";
 
+const whatsappUrl = "https://wa.me/34657375287?text=Hola%2C%20quiero%20conocer%20UNO%20M%C3%81S%20y%20solicitar%20una%20demostraci%C3%B3n.";
+
 type Profile = {
   name: string;
   short: string;
@@ -207,7 +209,20 @@ function FAQ() {
 
 function Demo() {
   const [sent, setSent] = useState(false);
-  return <section className="demo" id="demo"><div className="wrap"><div className="demo-copy"><span className="eyebrow lime">DEMOSTRACIÓN CON TU PROPIO NEGOCIO</span><h2>Diez minutos.<br/>Un caso real.<br/><em>Y lo ves trabajar.</em></h2><p>Utilizamos una tarea tuya para enseñarte cómo UNO podría preparar trabajo y devolvértelo listo para revisar.</p><div className="demo-example"><span>NOTA DE VOZ · 00:09</span><b>“Prepara esto y recuérdame revisarlo mañana.”</b><i>▮▮▮▮▮▮▮</i></div></div><form onSubmit={e => {e.preventDefault(); setSent(true)}} data-ready-for="crm-email-or-whatsapp"><div><label>Nombre<input required name="nombre" placeholder="Tu nombre"/></label><label>Tipo de negocio<input required name="negocio" placeholder="Ej. Restaurante"/></label></div><div><label>Teléfono<input required type="tel" name="telefono" placeholder="600 000 000"/></label><label>Correo<input required type="email" name="correo" placeholder="nombre@correo.es"/></label></div><label>¿Qué tarea te quita más tiempo?<textarea name="tarea" rows={3} placeholder="Presupuestos, proveedores, citas, facturas…"/></label><button>Solicitar demostración <span>↗</span></button>{sent && <p className="success" role="status">Solicitud preparada. El formulario está listo para conectarse con correo, WhatsApp o CRM.</p>}<small>Sin compromiso. Tus datos no se enviarán hasta conectar el formulario definitivo.</small></form></div></section>;
+  return <section className="demo" id="demo"><div className="wrap"><div className="demo-copy"><span className="eyebrow lime">DEMOSTRACIÓN CON TU PROPIO NEGOCIO</span><h2>Diez minutos.<br/>Un caso real.<br/><em>Y lo ves trabajar.</em></h2><p>Utilizamos una tarea tuya para enseñarte cómo UNO podría preparar trabajo y devolvértelo listo para revisar.</p><div className="demo-example"><span>NOTA DE VOZ · 00:09</span><b>“Prepara esto y recuérdame revisarlo mañana.”</b><i>▮▮▮▮▮▮▮</i></div></div><form onSubmit={e => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const message = [
+      "Hola, quiero solicitar una demostración de UNO MÁS.",
+      `Nombre: ${form.get("nombre")}`,
+      `Negocio: ${form.get("negocio")}`,
+      `Teléfono: ${form.get("telefono")}`,
+      `Correo: ${form.get("correo")}`,
+      `La tarea que más tiempo me quita: ${form.get("tarea") || "No indicada"}`,
+    ].join("\n");
+    setSent(true);
+    window.open(`https://wa.me/34657375287?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+  }} data-ready-for="whatsapp"><div><label>Nombre<input required name="nombre" placeholder="Tu nombre"/></label><label>Tipo de negocio<input required name="negocio" placeholder="Ej. Restaurante"/></label></div><div><label>Teléfono<input required type="tel" name="telefono" placeholder="600 000 000"/></label><label>Correo<input required type="email" name="correo" placeholder="nombre@correo.es"/></label></div><label>¿Qué tarea te quita más tiempo?<textarea name="tarea" rows={3} placeholder="Presupuestos, proveedores, citas, facturas…"/></label><button>Solicitar por WhatsApp <span>↗</span></button>{sent && <p className="success" role="status">Solicitud preparada. Se ha abierto WhatsApp para que revises y envíes el mensaje.</p>}<small>Sin compromiso. Nada se envía hasta que confirmes el mensaje en WhatsApp.</small></form></div></section>;
 }
 
 export default function Home() {
@@ -217,5 +232,5 @@ export default function Home() {
     elements.forEach(element => observer.observe(element));
     return () => observer.disconnect();
   }, []);
-  return <><main><Hero/><Intro/><PowerMap/><Businesses/><Advanced/><Device/><Offer/><Security/><FAQ/><Demo/><section className="closing"><Logo light/><h2>Tu negocio no necesita más horas.<br/><em>Necesita uno más.</em></h2><a className="button primary" href="#demo">Conoce al tuyo <span>↗</span></a></section></main><footer><Logo light/><p>UNO · Tu empleado digital.</p><div><a href="#negocios">Para quién</a><a href="#seguridad">Privacidad</a><a href="#demo">Contacto</a></div></footer></>;
+  return <><main><Hero/><Intro/><PowerMap/><Businesses/><Advanced/><Device/><Offer/><Security/><FAQ/><Demo/><section className="closing"><Logo light/><h2>Tu negocio no necesita más horas.<br/><em>Necesita uno más.</em></h2><div className="actions"><a className="button primary" href="#demo">Conoce al tuyo <span>↗</span></a><a className="button ghost" href={whatsappUrl} target="_blank" rel="noreferrer">Hablar por WhatsApp</a></div></section></main><footer><Logo light/><p>UNO · Tu empleado digital.</p><div><a href="#negocios">Para quién</a><a href="#seguridad">Privacidad</a><a href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp</a></div></footer></>;
 }
