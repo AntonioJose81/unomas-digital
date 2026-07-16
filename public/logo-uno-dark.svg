@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 160" role="img" aria-labelledby="title desc">
+  <title id="title">UNO</title>
+  <desc id="desc">Logotipo UNO con símbolo más dentro de un cuadrado lima redondeado</desc>
+  <g fill="none" stroke="#071817" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M30 34v58c0 30 18 48 48 48s48-18 48-48V34"/>
+    <path d="M166 138V34l88 104V34"/>
+    <rect x="292" y="32" width="112" height="108" rx="54"/>
+  </g>
+  <rect x="436" y="20" width="120" height="120" rx="34" fill="#B9FF35"/>
+  <path d="M496 51v58M467 80h58" fill="none" stroke="#071817" stroke-width="20" stroke-linecap="round"/>
+</svg>
