@@ -20,7 +20,7 @@ const profiles: Profile[] = [
   {
     name: "Oficios e instalaciones",
     short: "Oficios",
-    image: "/images/oficios-unomas.webp",
+    image: "/images/nipogi-pack/04-taller-uno-plus.webp",
     alt: "Electricista enviando una instrucción desde el móvil mientras trabaja en una reforma",
     title: "La obra termina. El presupuesto ya está en marcha.",
     text: "Para fontaneros, electricistas, instaladores, reformistas, carpinteros, pintores y técnicos de mantenimiento.",
@@ -30,7 +30,7 @@ const profiles: Profile[] = [
   {
     name: "Tiendas y comercios",
     short: "Comercio",
-    image: "/images/comercio-unomas.webp",
+    image: "/images/nipogi-pack/05-tienda-uno-plus.webp",
     alt: "Propietaria de una tienda fotografiando un documento de proveedor desde el móvil",
     title: "El mostrador no tiene por qué parar para hacer oficina.",
     text: "Para tiendas de barrio, comercios especializados, distribuidores, centros de estética y pequeños negocios con encargos.",
@@ -40,7 +40,7 @@ const profiles: Profile[] = [
   {
     name: "Bares y restaurantes",
     short: "Hostelería",
-    image: "/images/hosteleria-unomas.webp",
+    image: "/images/nipogi-pack/06-hosteleria-uno-plus.webp",
     alt: "Propietaria de un restaurante enviando una nota de voz durante el servicio",
     title: "Mientras sigue el servicio, alguien ordena lo de mañana.",
     text: "Para bares, restaurantes, cafeterías, catering y pequeños alojamientos que coordinan compras, tareas y documentación.",
@@ -50,7 +50,7 @@ const profiles: Profile[] = [
   {
     name: "Profesionales y servicios",
     short: "Servicios",
-    image: "/images/profesionales-unomas.webp",
+    image: "/images/nipogi-pack/03-oficina-uno-plus.webp",
     alt: "Composición de profesionales de oficios, hostelería, comercio y taller usando el móvil",
     title: "Propuestas, clientes y documentos sin perder la tarde.",
     text: "Para consultores, estudios, academias, clínicas pequeñas, administradores, agencias y profesionales independientes.",
@@ -60,7 +60,7 @@ const profiles: Profile[] = [
   {
     name: "Pequeños negocios y pymes",
     short: "Pymes",
-    image: "/images/pyme-unomas.webp",
+    image: "/images/nipogi-pack/08-banner-taller-uno-plus.webp",
     alt: "Responsable de un pequeño taller coordinando al equipo mediante una nota de voz",
     title: "El equipo trabaja. La coordinación también.",
     text: "Para talleres, almacenes, mantenimiento, fabricación y pequeñas empresas que necesitan tener el trabajo bajo control.",
@@ -104,7 +104,7 @@ function Header() {
 function Hero() {
   return <section className="hero" id="inicio">
     <Header />
-    <img className="hero-image" src="/images/hero-negocio-unomas.webp" alt="Propietaria de un pequeño negocio enviando una nota de voz mientras el equipo continúa trabajando" />
+    <img className="hero-image" src="/images/nipogi-pack/08-banner-taller-uno-plus.webp" alt="Profesional en su taller hablando con UNO desde el móvil junto al mini PC instalado en su negocio" />
     <div className="hero-shade" />
     <div className="hero-copy">
       <span className="eyebrow lime">TU EMPLEADO DIGITAL. EN UN EQUIPO QUE ES TUYO.</span>
@@ -188,7 +188,19 @@ function Advanced() {
 }
 
 function Device() {
-  return <section className="device" id="equipo"><div className="device-media"><img src="/images/equipo-unomas-v2.webp" alt="Mini PC de UNO y un teléfono móvil sobre el mostrador de un pequeño negocio"/><div className="device-badge"><i>●</i><span><b>UNO está trabajando</b><small>Resumen de hoy preparado</small></span></div></div><div className="device-copy"><span className="eyebrow lime">UN PRODUCTO FÍSICO, LISTO PARA TRABAJAR</span><h2>No alquilas una cuenta.<br/><em>El equipo es tuyo.</em></h2><p>Recibes el mini PC instalado y configurado con el nombre de tu empleado, tus datos, documentos, servicios y forma de trabajar.</p><ul><li><b>01</b><span>Mini PC en propiedad</span></li><li><b>02</b><span>Configuración adaptada</span></li><li><b>03</b><span>Acceso seguro desde el móvil</span></li><li><b>04</b><span>Formación y soporte inicial</span></li></ul></div></section>;
+  return <section className="device" id="equipo"><div className="device-media"><img src="/images/nipogi-pack/01-hero-producto-uno-plus.webp" alt="Mini PC UNO personalizado junto a un teléfono móvil con una nota de voz"/><div className="device-badge"><i>●</i><span><b>UNO está trabajando</b><small>Resumen de hoy preparado</small></span></div></div><div className="device-copy"><span className="eyebrow lime">UN PRODUCTO FÍSICO, LISTO PARA TRABAJAR</span><h2>No alquilas una cuenta.<br/><em>El equipo es tuyo.</em></h2><p>Recibes el mini PC instalado y configurado con el nombre de tu empleado, tus datos, documentos, servicios y forma de trabajar.</p><ul><li><b>01</b><span>Mini PC en propiedad</span></li><li><b>02</b><span>Configuración adaptada</span></li><li><b>03</b><span>Acceso seguro desde el móvil</span></li><li><b>04</b><span>Formación y soporte inicial</span></li></ul></div></section>;
+}
+
+function ProductGallery() {
+  return <section className="product-gallery wrap reveal" aria-label="El equipo UNO personalizado">
+    <div className="product-gallery-copy">
+      <span className="eyebrow">DISEÑADO PARA FORMAR PARTE DE TU NEGOCIO</span>
+      <h2>Pequeño por fuera.<br/><em>Uno más por dentro.</em></h2>
+      <p>Un equipo discreto, personalizado con la marca UNO y preparado para quedarse trabajando en tu oficina, taller, tienda o local.</p>
+    </div>
+    <figure className="product-shot product-shot-main"><img src="/images/nipogi-pack/02-catalogo-producto-uno-plus.webp" alt="Dos vistas del mini PC UNO personalizado"/></figure>
+    <figure className="product-shot product-shot-detail"><img src="/images/nipogi-pack/07-aplicacion-uv-dtf-uno-plus.webp" alt="Aplicación del logotipo UNO sobre el mini PC"/><figcaption>Personalización resistente y acabado profesional.</figcaption></figure>
+  </section>;
 }
 
 function Offer() {
@@ -232,5 +244,5 @@ export default function Home() {
     elements.forEach(element => observer.observe(element));
     return () => observer.disconnect();
   }, []);
-  return <><main><Hero/><Intro/><PowerMap/><Businesses/><Advanced/><Device/><Offer/><Security/><FAQ/><Demo/><section className="closing"><Logo light/><h2>Tu negocio no necesita más horas.<br/><em>Necesita uno más.</em></h2><div className="actions"><a className="button primary" href="#demo">Conoce al tuyo <span>↗</span></a><a className="button ghost" href={whatsappUrl} target="_blank" rel="noreferrer">Hablar por WhatsApp</a></div></section></main><footer><Logo light/><p>UNO · Tu empleado digital.</p><div><a href="#negocios">Para quién</a><a href="#seguridad">Privacidad</a><a href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp</a></div></footer></>;
+  return <><main><Hero/><Intro/><PowerMap/><Businesses/><Advanced/><Device/><ProductGallery/><Offer/><Security/><FAQ/><Demo/><section className="closing"><Logo light/><h2>Tu negocio no necesita más horas.<br/><em>Necesita uno más.</em></h2><div className="actions"><a className="button primary" href="#demo">Conoce al tuyo <span>↗</span></a><a className="button ghost" href={whatsappUrl} target="_blank" rel="noreferrer">Hablar por WhatsApp</a></div></section></main><footer><Logo light/><p>UNO · Tu empleado digital.</p><div><a href="#negocios">Para quién</a><a href="#seguridad">Privacidad</a><a href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp</a></div></footer></>;
 }
