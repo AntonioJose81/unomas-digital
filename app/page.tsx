@@ -5,6 +5,57 @@ import { useEffect, useState } from "react";
 
 const whatsappUrl = "https://wa.me/34657375287?text=Hola%2C%20quiero%20conocer%20UNO%20M%C3%81S%20y%20solicitar%20una%20demostraci%C3%B3n.";
 
+const possibilities = [
+  {
+    short: "Ventas",
+    number: "01",
+    ask: "Cada mañana busca empresas que puedan necesitar mis servicios y prepara una primera toma de contacto.",
+    title: "Prospección preparada para revisar",
+    text: "Investiga posibles clientes, reúne información pública y adapta el mensaje a cada negocio.",
+    results: ["Empresas que encajan", "Datos de contacto", "Borradores personalizados", "Seguimientos programados"],
+  },
+  {
+    short: "Gastos",
+    number: "02",
+    ask: "Cuando llegue una factura por correo, guárdala y añádela al control de gastos.",
+    title: "Documentación ordenada sin perseguirla",
+    text: "Puede detectar el documento, extraer los datos y preparar el registro en las herramientas del negocio.",
+    results: ["Factura localizada", "Datos extraídos", "Archivo organizado", "Registro actualizado"],
+  },
+  {
+    short: "Compras",
+    number: "03",
+    ask: "Busca alternativas para este material y compárame precio, entrega y pedido mínimo.",
+    title: "Una comparación útil, no diez pestañas",
+    text: "Investiga opciones y deja una comparativa clara. El pedido se realiza únicamente cuando tú lo confirmas.",
+    results: ["Proveedores posibles", "Precio y disponibilidad", "Plazos comparados", "Pedido listo para aprobar"],
+  },
+  {
+    short: "Visibilidad",
+    number: "04",
+    ask: "Analiza mi web y prepara una página para posicionar este nuevo servicio.",
+    title: "Tu negocio también avanza por fuera",
+    text: "Puede investigar búsquedas, preparar contenidos y proponer mejoras para web, campañas y publicaciones.",
+    results: ["Oportunidades detectadas", "Contenido preparado", "Mejoras priorizadas", "Publicación para revisar"],
+  },
+  {
+    short: "Control",
+    number: "05",
+    ask: "A las ocho dime qué pedidos son urgentes, quién espera respuesta y qué cobros siguen pendientes.",
+    title: "El día empieza con lo importante claro",
+    text: "Reúne información de distintas fuentes y la convierte en un resumen breve y accionable.",
+    results: ["Prioridades del día", "Clientes esperando", "Pedidos bloqueados", "Cobros pendientes"],
+  },
+  {
+    short: "Herramientas",
+    number: "06",
+    ask: "Necesito una pantalla sencilla para controlar encargos, fechas de entrega y pagos.",
+    title: "Puede ayudarte a crear la herramienta que falta",
+    text: "Según el caso, puede preparar una hoja automatizada, un formulario, un informe o un pequeño panel interno.",
+    results: ["Necesidad estructurada", "Prototipo funcional", "Datos conectados", "Proceso documentado"],
+  },
+];
+
 type Profile = {
   name: string;
   short: string;
@@ -73,6 +124,7 @@ const faq = [
   ["¿Tengo que aprender un programa?", "No. Le hablas desde el móvil con mensajes, notas de voz, fotos o documentos, como hablarías con alguien de tu oficina."],
   ["¿El mini PC es mío?", "Sí. UNO MÁS se instala en un pequeño equipo físico configurado para tu negocio y el equipo pasa a ser de tu propiedad."],
   ["¿Puede adaptarse a cualquier negocio?", "Parte de un núcleo común y añadimos el paquete de tu sector, tus datos, proveedores, precios, documentos y reglas de trabajo."],
+  ["¿Puede aprender nuevas tareas?", "Sí. No tiene un catálogo cerrado: pueden añadirse procedimientos, habilidades e integraciones según evoluciona el negocio. Cada nueva capacidad se configura, prueba y limita antes de utilizarse."],
   ["¿Hay una cuota obligatoria?", "No. La compra y puesta en marcha se pagan una sola vez. El soporte posterior es opcional y los servicios externos se pagan según el consumo real."],
   ["¿Puede enviar presupuestos o pedidos sin permiso?", "Las acciones importantes pueden quedar siempre preparadas para que tú las revises y apruebes antes de enviarlas."],
   ["¿Sustituye al TPV, la asesoría o mi programa de gestión?", "No necesariamente. Se ocupa de la capa de trabajo repetitivo y puede convivir con las herramientas que ya utilizas."],
@@ -158,6 +210,38 @@ function PowerMap() {
   </section>;
 }
 
+function Possibilities() {
+  const [active, setActive] = useState(0);
+  const item = possibilities[active];
+  return <section className="possibilities" id="aprende">
+    <div className="wrap">
+      <div className="possibilities-head reveal">
+        <div><span className="eyebrow">NO ES UN CATÁLOGO CERRADO</span><h2>Lo que ves es solo <em>el primer día.</em></h2></div>
+        <div><p>UNO+ llega preparado para las tareas habituales. Después puede aprender procedimientos, incorporar nuevas habilidades y conectarse con las herramientas que utiliza tu negocio.</p><strong>Si puedes explicarle cómo haces una tarea, podemos estudiar cómo enseñársela.</strong></div>
+      </div>
+
+      <div className="growth-path reveal" aria-label="Cómo crece UNO con el negocio">
+        <span><i>01</i><b>Llega preparado</b><small>Presupuestos, clientes, agenda, documentos y seguimientos.</small></span>
+        <em>→</em>
+        <span><i>02</i><b>Aprende tu forma</b><small>Precios, reglas, plantillas, proveedores y manera de comunicar.</small></span>
+        <em>→</em>
+        <span className="growth-highlight"><i>03</i><b>Suma habilidades</b><small>Nuevos procesos, automatizaciones e integraciones cuando los necesitas.</small></span>
+      </div>
+
+      <div className="possibility-console reveal">
+        <div className="console-bar"><span>UNO+ · NUEVA PETICIÓN</span><i>● LISTO PARA APRENDER</i></div>
+        <div className="console-content">
+          <div className="console-request"><small>TÚ LE PIDES</small><p>“{item.ask}”</p><span>Mensaje · Voz · Foto · Documento</span></div>
+          <div className="console-response"><div className="response-label"><small>UNO+ PREPARA</small><b>NUEVA HABILIDAD</b></div><h3>{item.title}</h3><p>{item.text}</p><div className="response-results">{item.results.map(result => <span key={result}>✓ {result}</span>)}</div></div>
+        </div>
+        <div className="possibility-tabs" role="tablist" aria-label="Ejemplos de nuevas capacidades">{possibilities.map((possibility, index) => <button key={possibility.short} role="tab" aria-selected={active === index} className={active === index ? "active" : ""} onClick={() => setActive(index)}><span>{possibility.number}</span>{possibility.short}</button>)}</div>
+      </div>
+
+      <div className="possibility-foot reveal"><b>No prometemos magia.</b><span>Las nuevas capacidades dependen de las herramientas, permisos e integraciones disponibles. Las acciones sensibles pueden requerir siempre tu aprobación.</span></div>
+    </div>
+  </section>;
+}
+
 function Businesses() {
   const [active, setActive] = useState(0);
   const p = profiles[active];
@@ -224,14 +308,7 @@ function Demo() {
   return <section className="demo" id="demo"><div className="wrap"><div className="demo-copy"><span className="eyebrow lime">DEMOSTRACIÓN CON TU PROPIO NEGOCIO</span><h2>Diez minutos.<br/>Un caso real.<br/><em>Y lo ves trabajar.</em></h2><p>Utilizamos una tarea tuya para enseñarte cómo UNO podría preparar trabajo y devolvértelo listo para revisar.</p><div className="demo-example"><span>NOTA DE VOZ · 00:09</span><b>“Prepara esto y recuérdame revisarlo mañana.”</b><i>▮▮▮▮▮▮▮</i></div></div><form onSubmit={e => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
-    const message = [
-      "Hola, quiero solicitar una demostración de UNO MÁS.",
-      `Nombre: ${form.get("nombre")}`,
-      `Negocio: ${form.get("negocio")}`,
-      `Teléfono: ${form.get("telefono")}`,
-      `Correo: ${form.get("correo")}`,
-      `La tarea que más tiempo me quita: ${form.get("tarea") || "No indicada"}`,
-    ].join("\n");
+    const message = ["Hola, quiero solicitar una demostración de UNO MÁS.", `Nombre: ${form.get("nombre")}`, `Negocio: ${form.get("negocio")}`, `Teléfono: ${form.get("telefono")}`, `Correo: ${form.get("correo")}`, `La tarea que más tiempo me quita: ${form.get("tarea") || "No indicada"}`].join("\n");
     setSent(true);
     window.open(`https://wa.me/34657375287?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
   }} data-ready-for="whatsapp"><div><label>Nombre<input required name="nombre" placeholder="Tu nombre"/></label><label>Tipo de negocio<input required name="negocio" placeholder="Ej. Restaurante"/></label></div><div><label>Teléfono<input required type="tel" name="telefono" placeholder="600 000 000"/></label><label>Correo<input required type="email" name="correo" placeholder="nombre@correo.es"/></label></div><label>¿Qué tarea te quita más tiempo?<textarea name="tarea" rows={3} placeholder="Presupuestos, proveedores, citas, facturas…"/></label><button>Solicitar por WhatsApp <span>↗</span></button>{sent && <p className="success" role="status">Solicitud preparada. Se ha abierto WhatsApp para que revises y envíes el mensaje.</p>}<small>Sin compromiso. Nada se envía hasta que confirmes el mensaje en WhatsApp.</small></form></div></section>;
@@ -244,5 +321,5 @@ export default function Home() {
     elements.forEach(element => observer.observe(element));
     return () => observer.disconnect();
   }, []);
-  return <><main><Hero/><Intro/><PowerMap/><Businesses/><Advanced/><Device/><ProductGallery/><Offer/><Security/><FAQ/><Demo/><section className="closing"><Logo light/><h2>Tu negocio no necesita más horas.<br/><em>Necesita uno más.</em></h2><div className="actions"><a className="button primary" href="#demo">Conoce al tuyo <span>↗</span></a><a className="button ghost" href={whatsappUrl} target="_blank" rel="noreferrer">Hablar por WhatsApp</a></div></section></main><footer><Logo light/><p>UNO · Tu empleado digital.</p><div><a href="#negocios">Para quién</a><a href="#seguridad">Privacidad</a><a href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp</a></div></footer></>;
+  return <><main><Hero/><Intro/><PowerMap/><Possibilities/><Businesses/><Advanced/><Device/><ProductGallery/><Offer/><Security/><FAQ/><Demo/><section className="closing"><Logo light/><h2>Tu negocio no necesita más horas.<br/><em>Necesita uno más.</em></h2><div className="actions"><a className="button primary" href="#demo">Conoce al tuyo <span>↗</span></a><a className="button ghost" href={whatsappUrl} target="_blank" rel="noreferrer">Hablar por WhatsApp</a></div></section></main><footer><Logo light/><p>UNO · Tu empleado digital.</p><div><a href="#negocios">Para quién</a><a href="#seguridad">Privacidad</a><a href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp</a></div></footer></>;
 }
