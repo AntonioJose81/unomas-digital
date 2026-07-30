@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useEffect, useState } from "react";
+import SiteFooter from "./components/SiteFooter";
 
 const whatsappUrl = "https://wa.me/34657375287?text=Hola%2C%20quiero%20conocer%20UNO%20M%C3%81S%20y%20solicitar%20una%20demostraci%C3%B3n.";
 
@@ -323,7 +324,7 @@ function Demo() {
     const message = ["Hola, quiero solicitar una demostración de UNO MÁS.", `Nombre: ${form.get("nombre")}`, `Negocio: ${form.get("negocio")}`, `Teléfono: ${form.get("telefono")}`, `Correo: ${form.get("correo")}`, `La tarea que más tiempo me quita: ${form.get("tarea") || "No indicada"}`].join("\n");
     setSent(true);
     window.open(`https://wa.me/34657375287?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
-  }} data-ready-for="whatsapp"><div><label>Nombre<input required name="nombre" placeholder="Tu nombre"/></label><label>Tipo de negocio<input required name="negocio" placeholder="Ej. Restaurante"/></label></div><div><label>Teléfono<input required type="tel" name="telefono" placeholder="600 000 000"/></label><label>Correo<input required type="email" name="correo" placeholder="nombre@correo.es"/></label></div><label>¿Qué tarea te quita más tiempo?<textarea name="tarea" rows={3} placeholder="Presupuestos, proveedores, citas, facturas…"/></label><button>Solicitar por WhatsApp <span>↗</span></button>{sent && <p className="success" role="status">Solicitud preparada. Se ha abierto WhatsApp para que revises y envíes el mensaje.</p>}<small>Sin compromiso. Nada se envía hasta que confirmes el mensaje en WhatsApp.</small></form></div></section>;
+  }} data-ready-for="whatsapp"><div><label>Nombre<input required name="nombre" placeholder="Tu nombre"/></label><label>Tipo de negocio<input required name="negocio" placeholder="Ej. Restaurante"/></label></div><div><label>Teléfono<input required type="tel" name="telefono" placeholder="600 000 000"/></label><label>Correo<input required type="email" name="correo" placeholder="nombre@correo.es"/></label></div><label>¿Qué tarea te quita más tiempo?<textarea name="tarea" rows={3} placeholder="Presupuestos, proveedores, citas, facturas…"/></label><p className="privacy-layer"><b>Responsable:</b> Antonio José Alonso Gómez. <b>Finalidad:</b> atender tu solicitud y preparar la demostración. <b>Base:</b> tu consentimiento y medidas precontractuales. <b>Derechos:</b> puedes ejercerlos en antonio@unomas.digital. <a href="/politica-privacidad/" target="_blank">Más información</a>.</p><label className="privacy-check"><input required type="checkbox" name="privacidad"/><span>He leído la <a href="/politica-privacidad/" target="_blank">política de privacidad</a> y autorizo el uso de mis datos para gestionar esta solicitud.</span></label><button>Solicitar por WhatsApp <span>↗</span></button>{sent && <p className="success" role="status">Solicitud preparada. Se ha abierto WhatsApp para que revises y envíes el mensaje.</p>}<small>Sin compromiso. Nada se envía hasta que confirmes el mensaje en WhatsApp.</small></form></div></section>;
 }
 
 export default function Home() {
@@ -333,5 +334,5 @@ export default function Home() {
     elements.forEach(element => observer.observe(element));
     return () => observer.disconnect();
   }, []);
-  return <><main><Hero/><Intro/><PowerMap/><Possibilities/><Businesses/><Advanced/><Device/><ProductGallery/><Offer/><Security/><FAQ/><Demo/><section className="closing"><Logo light/><h2>Tu negocio no necesita más horas.<br/><em>Necesita uno más.</em></h2><div className="actions"><a className="button primary" href="#demo">Conoce al tuyo <span>↗</span></a><a className="button ghost" href={whatsappUrl} target="_blank" rel="noreferrer">Hablar por WhatsApp</a></div></section></main><footer><Logo light/><p>UNO · Tu empleado digital.</p><div><a href="#negocios">Para quién</a><a href="#seguridad">Privacidad</a><a href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp</a></div></footer></>;
+  return <><main><Hero/><Intro/><PowerMap/><Possibilities/><Businesses/><Advanced/><Device/><ProductGallery/><Offer/><Security/><FAQ/><Demo/><section className="closing"><Logo light/><h2>Tu negocio no necesita más horas.<br/><em>Necesita uno más.</em></h2><div className="actions"><a className="button primary" href="#demo">Conoce al tuyo <span>↗</span></a><a className="button ghost" href={whatsappUrl} target="_blank" rel="noreferrer">Hablar por WhatsApp</a></div></section></main><SiteFooter /></>;
 }
