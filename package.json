@@ -9,7 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ignore-pattern .next --ignore-pattern out"
+    "lint": "eslint . --ignore-pattern .next --ignore-pattern out",
+    "test": "npm run build && node --test tests/exported-site.test.mjs"
   },
   "dependencies": {
     "next": "16.2.6",
@@ -27,5 +28,5 @@
     "typescript": "5.9.3"
   },
   "type": "module",
-  "displayName": "UNO M\u00c1S \u2014 Tu empleado digital"
+  "displayName": "UNO+ — Tu departamento externo de IA"
 }
