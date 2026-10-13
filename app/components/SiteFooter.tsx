@@ -10,9 +10,10 @@ export default function SiteFooter() {
       <Link className="brand" href="/" aria-label="UNO, inicio">
         <Image src="/logo-uno-light.svg" alt="UNO" width={145} height={42} />
       </Link>
-      <p>UNO · Tu empleado digital.</p>
+      <p>UNO+ · Tu departamento externo de IA.</p>
       <div>
-        <Link href="/#negocios">Para quién</Link>
+        <Link href="/#servicios">Servicios</Link>
+        <Link href="/#contacto">Contacto</Link>
         <Link href="/politica-privacidad/">Privacidad</Link>
         <Link href="/politica-cookies/">Cookies</Link>
         <CookieSettingsButton />
